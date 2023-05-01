@@ -87,3 +87,32 @@ do
  counter2=$((counter2+1))
 done
 ```
+**Program-4:  Write shell script to execute switch and if else loop.**
+``` console
+
+# if-else statement
+echo "Executing if-else Statement"
+
+echo "Enter your age: "
+read age
+if [ $age -gt 18 ]
+ then
+  echo "You're Eligible to Drive."
+else
+  echo "You aren't yet Eligible to Drive."
+fi
+
+echo ""
+
+# Swith Statement
+echo "Executing Switch Statement"
+
+echo "Enter name of any fruit"
+read fruit
+case "$fruit" in
+  "apple") echo "This is an apple.";;
+  "banana") echo "This is an banana.";;
+  "orange") echo "This is an orange.";;
+    *) echo "I Don't Know what fruit this is.";;
+esac
+```
