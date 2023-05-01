@@ -116,3 +116,114 @@ case "$fruit" in
     *) echo "I Don't Know what fruit this is.";;
 esac
 ```
+**Program-5: . Write a shell script to show various system configuration like currently logged user and 
+his logname, your current shell, home directory, operating system type, current path 
+setting, current working directory, show currently logged number of users, show 
+memory information, Hard disk information like size of hard-disk, cache model etc, and 
+file system mounted.**
+
+``` console
+#!/bin/bash
+
+# Various System Configurations
+
+# Current Logged user
+echo ""
+echo "Current Logged User: $USER"
+echo ""
+# Show Current Shell
+echo "Current Shell: $SHELL"
+echo ""
+# Show Home Directory
+echo "Home Directory: $HOME"
+echo ""
+# Show Operating System
+echo "Operating System: $(uname -o)"
+echo ""
+# Current Path Setting
+echo "Current Path Setting: $PATH"
+echo ""
+# Current Working Directroy
+echo "Current Working Directory: $(pwd)"
+echo ""
+# Memory Information
+echo "Memory Information:"
+free -m
+echo ""
+# Hard Disk Info
+echo "Hard Disk Info:"
+df -h
+echo""
+# Cache Model
+echo "Cache Model:"
+lscpu | grep "L3 cache"
+echo ""
+# File System Mounted
+echo "File System Mounted:"
+mount | column -t
+echo""
+```
+
+**Program-6: Write a shell script to add user and password on Linux system.**
+``` console
+#!/bin/bash
+
+# Script to add user and password on Linux system
+
+# Ask for user details
+read -p "Enter username: " username
+read -s -p "Enter password: " password
+echo
+
+# Check if user already exists
+if id "$username" &>/dev/null; then
+    echo "User already exists. Aborting."
+    exit 1
+fi
+
+# Add user
+sudo useradd -m -s /bin/bash "$username"
+
+# Set password for user
+echo "$username:$password" | sudo chpasswd
+
+# Display message
+echo "User '$username' added successfully with password '$password'."
+```
+
+**Program-7:  Write a shell script that delete all lines containing a specified word.**
+
+``` console
+#!/bin/bash
+
+# Write a shell script that deletes all lines containing a specified word.
+
+echo "Enter file name:"
+read file
+echo ""
+echo "Enter specific word from the file:"
+read word
+echo ""
+echo "File before removing word \"$word\":"
+cat $file
+grep -v -i "$word" "$file" > test
+mv test "$file"
+echo ""
+echo "File after removing word \"$word\":"
+cat $file
+```
+
+**Program-8:   Write a shell script to upgrade and cleans the system automatically instead of doing it manually.**
+
+``` console
+#!/bin/bash
+
+# Write a shell script to upgrade and cleans the system automatically instead of doing it manually
+
+# Update system packages
+sudo apt update && sudo apt upgrade -y
+
+# Clean system packages
+sudo apt autoremove -y && sudo apt autoclean
+
+```
