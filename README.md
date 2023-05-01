@@ -227,3 +227,38 @@ sudo apt update && sudo apt upgrade -y
 sudo apt autoremove -y && sudo apt autoclean
 
 ```
+**Program-9:  Write a shell script to find the factorial of given integer.**
+
+``` console
+#!/bin/bash
+# Write a shell script to find the factorial of given integer.
+echo "Enter a number: "
+read num
+fact=1
+i=1
+while [ $i -le $num ]
+do
+ ((fact= fact*i))
+ ((i++))
+done
+echo $fact
+```
+**Program-10: Write a shell script to find the number of characters, words and lines in a file.**
+```console
+#!/bin/bash
+# Write a shell script to find the number of characters, words and lines in a file
+
+file_path="/home/unix/demo.txt"
+
+echo "Number of Lines: "
+number_of_lines= wc --lines<$file_path
+echo ""
+
+echo "Number of Words:"
+number_of_words= wc --words<$file_path
+echo ""
+
+echo "Number of Characters: "
+number_of_char= wc --c<$file_path
+echo""
+```
